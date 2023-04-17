@@ -1,4 +1,4 @@
-The Bruinen starter app is a Next.js[Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This Bruinen starter app is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 It uses the Bruinen SDK to connect your Venmo account and log your Venmo transactions to the console, and is meant as an example to help you get started using Bruinen quickly.
 
 ## Getting Started

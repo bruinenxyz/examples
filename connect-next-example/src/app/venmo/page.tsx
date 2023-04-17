@@ -2,7 +2,7 @@
 import { useUserContext } from "../context/state";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-const _ = require('lodash');
+import * as _ from 'lodash';
 
 export default function Venmo() {
   const { userId, userToken, addUser } = useUserContext();

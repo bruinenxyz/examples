@@ -1,7 +1,19 @@
 import { NextResponse } from 'next/server';
 import { Bruinen } from '@bruinenco/bruinen-sdk';
-const _ = require('lodash');
+import * as _ from 'lodash';
 
+// Instantiate the Bruinen SDK: https://docs.bruinen.co/api-reference/bruinen-sdk
+const bruinen = new Bruinen({
+  type: "apiKey",
+  apiKey: process.env.BRUINEN_SECRET as string
+});
+
+/**
+ * Pulls the user's list of accounts connected to Bruinen
+ * @param request — userId sent as URL parameter
+ * @returns the user's list of connected accounts, inc. source name and ID — see docs:
+ * https://docs.bruinen.co/api-reference/accounts/get-accounts-by-user
+ */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const userId = searchParams.get('userId');
@@ -9,12 +21,6 @@ export async function GET(request: Request) {
   if (!userId) {
     return new Response('User ID not found', { status: 400 });
   };
-
-  // Instantiate the Bruinen SDK: https://docs.bruinen.co/api-reference/bruinen-sdk
-  const bruinen = new Bruinen({
-    type: "apiKey",
-    apiKey: process.env.BRUINEN_SECRET || ""
-  });
 
   // Pull the list of accounts that the user has connected
   const userAccounts = await bruinen.getUserAccounts(userId);
